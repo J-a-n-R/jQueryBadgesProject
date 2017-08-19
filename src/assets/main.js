@@ -6,9 +6,15 @@ $(function() {
 	    dataType: 'jsonp',
 	    success: function(response) {
 	      // handle response
+	    	addUser(response.user);
 	    	addCourses(response.courses.completed);
 	    }
 	});
+	function addUser(user){
+		$('h1').replaceWith($('<h1 />', {
+			text: user.username + '\'s Completed Courses at Code School'
+		}));
+	}
 	function addCourses(courses){
 		var $badges = $('#badges');
 		courses.forEach(function(course){
